@@ -1,5 +1,5 @@
 # scryfall-cache
-Downloading scryfall data and loading into a memory cache to lighten load on scryfall servers, and finding massive amounts of cards faster.
+Finding massive amounts of cards on scryfall without overloading the api
 
 ## Installation
 

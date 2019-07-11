@@ -1,17 +1,14 @@
 {
-  "name": "mtg-tools",
-  "version": "0.3.4",
+  "name": "scryfall-cache",
+  "version": "0.1.0",
   "author": "jonn@jonn.nu",
-  "description": "EDH/Commander tools for Magic: The Gathering",
+  "description": "Finding massive amounts of cards on scryfall without overloading the api",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@github.com:princejonn/mtg-tools.git"
+    "url": "git@github.com:princejonn/scryfall-cache.git"
   },
   "main": "lib/index",
-  "bin": {
-    "mtg-tools": "./lib/index.js"
-  },
   "scripts": {
     "build": "cross-env BABEL_ENV=production babel src --out-dir lib",
     "check": "npm-check --update",
@@ -24,8 +21,7 @@
     "prepublishOnly": "npm run clean && npm run lint && npm run build",
     "publish:patch": "npm version patch && npm publish",
     "publish:minor": "npm version minor && npm publish",
-    "publish:major": "npm version major && npm publish",
-    "test": "npm run build && npm i -g ./"
+    "publish:major": "npm version major && npm publish"
   },
   "dependencies": {
     "date-fns": "^1.30.1",
