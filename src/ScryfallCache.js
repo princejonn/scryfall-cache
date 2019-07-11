@@ -8,12 +8,17 @@ import ScryfallRequest from "utils/ScryfallRequest";
 import SearchString from "utils/SearchString";
 
 export default class ScryfallCache {
-  constructor() {
+  /**
+   * @param {object} [options]
+   * @param {number} [options.cache]
+   * @param {string} [options.cwd]
+   * @param {string} [options.uri]
+   */
+  constructor(options = {}) {
+    this._options = options;
     this._loaded = false;
-
     this._cache = null;
     this._rulings = null;
-
     this._names = [];
   }
 
@@ -25,8 +30,8 @@ export default class ScryfallCache {
   async load() {
     if (this._loaded) return;
 
-    const request = new ScryfallRequest();
-    const tool = new FileTool();
+    const request = new ScryfallRequest(this._options);
+    const tool = new FileTool(this._options);
 
     await request.downloadFiles();
 

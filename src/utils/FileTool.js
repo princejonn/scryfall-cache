@@ -5,9 +5,14 @@ import dateFns from "date-fns";
 import isObject from "lodash/isObject";
 
 export default class FileTool {
-  constructor() {
-    this._cacheHours = 24;
-    this._cwd = path.join(os.homedir(), ".mtg-tools", "downloads");
+  /**
+   * @param {object} [options]
+   * @param {number} [options.cache]
+   * @param {string} [options.cwd]
+   */
+  constructor(options = {}) {
+    this._cacheHours = options.cache || 24;
+    this._cwd = options.cwd || path.join(os.homedir(), ".mtg-tools", "downloads");
 
     if (!fs.existsSync(this._cwd)) {
       fs.mkdirSync(this._cwd, { recursive: true });

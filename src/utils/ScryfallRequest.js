@@ -13,9 +13,15 @@ const ListType = {
 };
 
 export default class ScryfallRequest {
-  constructor() {
-    this._bulkDataURI = "https://api.scryfall.com/bulk-data";
-
+  /**
+   * @param {object} [options]
+   * @param {number} [options.cache]
+   * @param {string} [options.cwd]
+   * @param {string} [options.uri]
+   */
+  constructor(options = {}) {
+    this._options = options;
+    this._bulkDataURI = options.uri || "https://api.scryfall.com/bulk-data";
     this._bulkData = [];
     this._files = {};
   }
@@ -60,7 +66,7 @@ export default class ScryfallRequest {
    * @private
    */
   async _download(bulkItem) {
-    const fileTool = new FileTool();
+    const fileTool = new FileTool(this._options);
 
     const file = fileTool.getFile(bulkItem);
     const shouldDownload = await fileTool.shouldDownload(bulkItem);
