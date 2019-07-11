@@ -1,19 +1,10 @@
 # Generated
-/cache
-/db
 /lib
 /node_modules
-/reports
 
 # NPM
 .npmrc
 
-# Environment
-.env
-
-# Logs
-logs
-*.log
 npm-debug.log*
 
 # IDE

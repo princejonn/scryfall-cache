@@ -1,7 +1,4 @@
-cache
-db
 node_modules
-reports
 src
 .idea
 .vscode
