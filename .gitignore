@@ -1,0 +1,32 @@
+# Generated
+/cache
+/db
+/lib
+/node_modules
+/reports
+
+# NPM
+.npmrc
+
+# Environment
+.env
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# IDE
+*.sublime-*
+.vscode
+jsconfig.json
+/.idea
+
+# Other
+lib-cov
+pids
+.DS_Store
+.npm
+.node_repl_history
+*.pid
+*.seed
