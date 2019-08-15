@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 import dateFns from "date-fns";
 import isObject from "lodash/isObject";
+import Logger from "utils/Logger";
 
 export default class FileTool {
   /**
@@ -11,6 +12,7 @@ export default class FileTool {
    * @param {string} [options.workDir]
    */
   constructor(options = {}) {
+    this._logger = Logger.getContextLogger("file-tool");
     this._cacheHours = options.cacheHours || 24;
     this._workDir = options.workDir || path.join(os.homedir(), ".scryfall-cache");
 
@@ -25,12 +27,15 @@ export default class FileTool {
    * @param {BulkItem} bulkItem
    */
   async shouldDownload(bulkItem) {
+    this._logger.debug("checking if cache should download for item", bulkItem);
+
     if (!isObject(bulkItem)) {
       throw new Error(`bulkItem undefined [ ${bulkItem} ]`);
     }
 
     const file = this.getFile(bulkItem);
     if (!file.exists) {
+      this._logger.debug("file not found. returning true");
       return true;
     }
 
@@ -39,7 +44,13 @@ export default class FileTool {
 
     const hours = dateFns.differenceInHours(date, modified);
 
-    return hours > this._cacheHours;
+    this._logger.debug("file found with modified date", date);
+
+    const shouldDownload = hours > this._cacheHours;
+
+    this._logger.debug("should download", shouldDownload);
+
+    return shouldDownload;
   }
 
   /**
@@ -58,6 +69,8 @@ export default class FileTool {
    * @returns {{path: string, exists: boolean, info: object}}
    */
   getFile(bulkItem) {
+    this._logger.debug("returning file for item", bulkItem);
+
     if (!isObject(bulkItem)) {
       throw new Error(`bulkItem undefined [ ${bulkItem} ]`);
     }

@@ -1,3 +1,3 @@
-import ScryfallCache from "ScryfallCache";
+import ScryfallCache from "components/ScryfallCache";
 
 export default ScryfallCache;

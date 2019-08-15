@@ -4,6 +4,7 @@ import includes from "lodash/includes";
 import startsWith from "lodash/startsWith";
 import FileTool from "utils/FileTool";
 import Latinise from "utils/Latinise";
+import Logger from "utils/Logger";
 import ScryfallRequest from "utils/ScryfallRequest";
 import SearchString from "utils/SearchString";
 
@@ -15,6 +16,7 @@ export default class ScryfallCache {
    * @param {string} [options.uri]
    */
   constructor(options = {}) {
+    this._logger = Logger.getContextLogger("cache");
     this._options = options;
     this._loaded = false;
     this._cache = null;
@@ -30,14 +32,21 @@ export default class ScryfallCache {
   async load() {
     if (this._loaded) return;
 
+    this._logger.debug("loading cache");
+
     const request = new ScryfallRequest(this._options);
     const tool = new FileTool(this._options);
 
     await request.downloadFiles();
 
     const files = await request.getFiles();
+
+    this._logger.debug("loading files into cache");
+
     this._cache = await tool.readFile(files.defaultCards);
     this._rulings = await tool.readFile(files.rulings);
+
+    this._logger.debug("caching card names");
 
     for (const card of this._cache) {
       if (!includes(this._names, card.name)) {
@@ -120,6 +129,8 @@ export default class ScryfallCache {
    * @private
    */
   _findCard(name) {
+    this._logger("finding card with more accurate method", name);
+
     for (const card of this._cache) {
       if (ScryfallCache._latinise(name) === ScryfallCache._latinise(card.name)) {
         return card;

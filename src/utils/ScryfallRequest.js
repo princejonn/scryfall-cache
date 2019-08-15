@@ -4,6 +4,7 @@ import humps from "lodash-humps";
 import request from "request-promise-native";
 import BulkItem from "models/BulkItem";
 import FileTool from "utils/FileTool";
+import Logger from "utils/Logger";
 
 const ListType = {
   DEFAULT_CARDS: "default_cards",
@@ -20,6 +21,7 @@ export default class ScryfallRequest {
    * @param {string} [options.uri]
    */
   constructor(options = {}) {
+    this._logger = Logger.getContextLogger("request");
     this._options = options;
     this._bulkDataURI = options.uri || "https://api.scryfall.com/bulk-data";
     this._bulkData = [];
@@ -32,6 +34,8 @@ export default class ScryfallRequest {
    * @returns {Promise<void>}
    */
   async downloadFiles() {
+    this._logger.debug("downloading files");
+
     await this._setBulkDataList();
 
     const defaultCards = find(this._bulkData, { type: ListType.DEFAULT_CARDS });
@@ -42,6 +46,9 @@ export default class ScryfallRequest {
 
     this._files.defaultCards = defaultFile;
     this._files.rulings = rulingsFile;
+
+    this._logger.debug("default cards file", defaultFile);
+    this._logger.debug("rulings file", rulingsFile);
   }
 
   /**
@@ -77,6 +84,8 @@ export default class ScryfallRequest {
 
     const { permalinkUri } = bulkItem;
     const workDir = fileTool.getWorkDir();
+
+    this._logger.debug("downloading from uri", permalinkUri);
 
     await download(permalinkUri, workDir);
 
