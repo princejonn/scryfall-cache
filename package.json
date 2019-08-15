@@ -1,6 +1,6 @@
 {
   "name": "scryfall-cache",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "jonn@jonn.nu",
   "description": "Finding massive amounts of cards on scryfall without overloading the api",
   "license": "MIT",
