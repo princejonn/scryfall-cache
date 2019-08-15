@@ -10,8 +10,8 @@ import SearchString from "utils/SearchString";
 export default class ScryfallCache {
   /**
    * @param {object} [options]
-   * @param {number} [options.cache]
-   * @param {string} [options.cwd]
+   * @param {number} [options.cacheHours]
+   * @param {string} [options.workDir]
    * @param {string} [options.uri]
    */
   constructor(options = {}) {

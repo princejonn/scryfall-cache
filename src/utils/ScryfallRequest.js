@@ -15,8 +15,8 @@ const ListType = {
 export default class ScryfallRequest {
   /**
    * @param {object} [options]
-   * @param {number} [options.cache]
-   * @param {string} [options.cwd]
+   * @param {number} [options.cacheHours]
+   * @param {string} [options.workDir]
    * @param {string} [options.uri]
    */
   constructor(options = {}) {
@@ -76,9 +76,9 @@ export default class ScryfallRequest {
     }
 
     const { permalinkUri } = bulkItem;
-    const cwd = fileTool.getCWD();
+    const workDir = fileTool.getWorkDir();
 
-    await download(permalinkUri, cwd);
+    await download(permalinkUri, workDir);
 
     return file.path;
   }

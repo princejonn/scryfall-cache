@@ -7,15 +7,15 @@ import isObject from "lodash/isObject";
 export default class FileTool {
   /**
    * @param {object} [options]
-   * @param {number} [options.cache]
-   * @param {string} [options.cwd]
+   * @param {number} [options.cacheHours]
+   * @param {string} [options.workDir]
    */
   constructor(options = {}) {
-    this._cacheHours = options.cache || 24;
-    this._cwd = options.cwd || path.join(os.homedir(), ".mtg-tools", "downloads");
+    this._cacheHours = options.cacheHours || 24;
+    this._workDir = options.workDir || path.join(os.homedir(), ".scryfall-cache");
 
-    if (!fs.existsSync(this._cwd)) {
-      fs.mkdirSync(this._cwd, { recursive: true });
+    if (!fs.existsSync(this._workDir)) {
+      fs.mkdirSync(this._workDir, { recursive: true });
     }
   }
 
@@ -47,8 +47,8 @@ export default class FileTool {
    *
    * @returns {string}
    */
-  getCWD() {
-    return this._cwd;
+  getWorkDir() {
+    return this._workDir;
   }
 
   /**
@@ -65,7 +65,7 @@ export default class FileTool {
     const { permalinkUri } = bulkItem;
     const split = permalinkUri.split("/");
     const fileName = split[split.length - 1];
-    const filePath = path.join(this._cwd, fileName);
+    const filePath = path.join(this._workDir, fileName);
 
     let fileExists = false;
     let fileInfo = null;
