@@ -15,13 +15,12 @@ If you want to request ~1000 card details from scryfall, you will need ~200ms + 
 
 ## Example
 ```javascript
-import ScryfallCache from "scryfall-cache";
+import { load, findCard, getCard, getRulings } from "scryfall-cache";
 
-const cache = new ScryfallCache();
-await cache.load(); // needed to download/load into cache.
+await load();
 
-console.log(await cache.findCard("Jhoira, Weatherlight Captain"));
-console.log(await cache.getCard("73cf8c6b-1322-4bc5-a604-6e372607fae4"));
+console.log(findCard("Jhoira, Weatherlight Captain"));
+console.log(getCard("73cf8c6b-1322-4bc5-a604-6e372607fae4"));
 ## {
 ##   object: 'card',
 ##   id: '73cf8c6b-1322-4bc5-a604-6e372607fae4',
@@ -37,7 +36,7 @@ console.log(await cache.getCard("73cf8c6b-1322-4bc5-a604-6e372607fae4"));
 ## ...
 
 
-console.log(await cache.getRulings("73cf8c6b-1322-4bc5-a604-6e372607fae4"));
+console.log(getRulings("73cf8c6b-1322-4bc5-a604-6e372607fae4"));
 ## [
 ##   {
 ##     object: 'ruling',

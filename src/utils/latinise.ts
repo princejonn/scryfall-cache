@@ -1,11 +1,7 @@
-/* eslint-disable */
+import { ILatinMap } from "../interfaces";
 
-/**
- * @param {string} string
- * @returns {string}
- */
-export default (string) => {
-  const latinMap = {
+const latinise = (string: string): string => {
+  const latinMap: ILatinMap = {
     "Ã": "A",
     "Ä‚": "A",
     "áº®": "A",
@@ -837,5 +833,7 @@ export default (string) => {
     "áµ¥": "v",
     "â‚“": "x",
   };
-  return string.replace(/[^A-Za-z0-9]/g, (x) => { return latinMap[x] || x; });
+  return string.replace(/[^A-Za-z0-9]/g, x => { return latinMap[x] || x; });
 };
+
+export default latinise;

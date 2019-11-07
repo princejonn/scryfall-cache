@@ -1,23 +1,11 @@
-# Generated
-/lib
+/.idea
+/.vscode
+/coverage
+/dist
 /node_modules
 
-# NPM
-.npmrc
-
-npm-debug.log*
-
-# IDE
-*.sublime-*
-.vscode
-jsconfig.json
-/.idea
-
-# Other
-lib-cov
-pids
 .DS_Store
-.npm
-.node_repl_history
-*.pid
-*.seed
+.npmrc
+Thumbs.db
+
+*.sublime-*
