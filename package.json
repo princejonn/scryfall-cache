@@ -32,19 +32,15 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "@types/download": "^6.2.4",
     "axios": "^0.19.0",
     "camelcase-keys": "^6.1.0",
     "date-fns": "^2.6.0",
-    "date-fns-timezone": "^0.1.4",
     "download": "^7.1.0",
     "lodash": "^4.17.15",
-    "lodash-humps": "^3.1.5",
-    "query-string": "^6.8.3",
-    "simple-winston": "0.0.2",
-    "winston": "^3.2.1"
+    "simple-winston": "0.0.2"
   },
   "devDependencies": {
+    "@types/download": "^6.2.4",
     "@types/lodash": "^4.14.144",
     "@typescript-eslint/eslint-plugin": "^2.6.1",
     "@typescript-eslint/parser": "^2.6.1",
