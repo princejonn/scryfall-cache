@@ -1,7 +1,7 @@
 {
   "name": "scryfall-cache",
   "description": "Finding massive amounts of cards on scryfall without overloading the api",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "license": "ISC",
   "main": "dist/index",
   "repository": {
