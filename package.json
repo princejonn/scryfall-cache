@@ -32,24 +32,24 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "axios": "^0.19.0",
-    "camelcase-keys": "^6.1.1",
-    "date-fns": "^2.8.1",
+    "axios": "^0.19.2",
+    "camelcase-keys": "^6.1.2",
+    "date-fns": "^2.9.0",
     "download": "^7.1.0",
     "lodash": "^4.17.15",
-    "simple-winston": "^0.1.0"
+    "simple-winston": "^0.1.1"
   },
   "devDependencies": {
     "@types/download": "^6.2.4",
     "@types/lodash": "^4.14.149",
-    "@typescript-eslint/eslint-plugin": "^2.9.0",
-    "@typescript-eslint/parser": "^2.9.0",
-    "eslint": "^6.7.2",
-    "husky": "^3.1.0",
-    "jest": "^24.9.0",
-    "lint-staged": "^9.5.0",
-    "rimraf": "^3.0.0",
-    "ts-jest": "^24.2.0",
-    "typescript": "^3.7.2"
+    "@typescript-eslint/eslint-plugin": "^2.20.0",
+    "@typescript-eslint/parser": "^2.20.0",
+    "eslint": "^6.8.0",
+    "husky": "^4.2.3",
+    "jest": "^25.1.0",
+    "lint-staged": "^10.0.7",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^25.2.1",
+    "typescript": "^3.7.5"
   }
 }
